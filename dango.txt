@@ -1,0 +1,22 @@
+django-admin startproject [web] .
+change timezone settings.py
+
+###Migrate Databases
+from $VENV python manage.py migrate
+python manage.py runserver
+python manage.py startapp blog 
+###Tell django app the new app in settings.py INSTALLED_APPS()
+####Create a blog model in blog models.py
+
+##after creating your model make migrations
+python manage.py makemigrations blog
+###Run the migration
+  python manage.py migrate blog
+
+###Lets use django admin to edit create posts  
+  blog/admin.py
+  from .models import Post
+  admin.site.register(Post)
+
+##### Create Super User
+  python manage.py createsuperuser
