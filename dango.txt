@@ -20,3 +20,26 @@ python manage.py makemigrations blog
 
 ##### Create Super User
   python manage.py createsuperuser
+#####Configure Urls
+  mysite urls.py
+  urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'', include('blog.urls')),
++++++Create this file
+|
+V
+####Blog urls.py
+  urlpatterns = [
+    url(r'^$', views.post_list, name='post_list'),
+]
+
+
+
+
+######Now into blog views
+  def post_list(request):
+    return render(request, 'blog/post_list.html')
+
+
+ 
+  
