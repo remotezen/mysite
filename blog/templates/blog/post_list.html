@@ -5,9 +5,11 @@
   <title></title>
 </head>
 <body>
-  <h1>
-    hi there
-  </h1>
+  <div>
+    {% for post in posts%}
+      {{post.title}}
+    {%endfor%}
+  </div>
   
 </body>
 </html>

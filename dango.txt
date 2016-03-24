@@ -40,6 +40,20 @@ V
   def post_list(request):
     return render(request, 'blog/post_list.html')
 
+### Better django terminal
+jupyter  notebook --profile=mysite
 
- 
+  INSTALLED_APPS = (
+  'django_extensions'
+ )
+  python manage.py shell_plus
+  python manage.py shell_plus --notebook
+
+###Some basic commend shell database commands
+  Post.objects.all()
+
+
   
+
+
+
