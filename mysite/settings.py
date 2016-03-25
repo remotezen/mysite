@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'bootstrap3',
     'blog',
 ]
 
@@ -101,6 +102,26 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+STATIC_ROOT = 'staticfiles/'
+STATIC_URL = '/static/'
+MEDIA_ROOT = 'uploads/'
+MEDIA_URL = "/media/"
+
+PIPELINE_COMPILERS = (
+    'pipeline.compilers.less.LessCompiler',
+)
+
+# TODO update this to reflect where your settings live relative to the project root
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+my_app_less = os.path.join(BASE_DIR, 'my_app', 'static', 'less')
+
+# For apps outside of your project, it's simpler to import them to find their root folders
+import twitter_bootstrap
+bootstrap_less = os.path.join(os.path.dirname(twitter_bootstrap.__file__), 'static', 'less')
+
+PIPELINE_LESS_ARGUMENTS = u'--include-path={}'.format(os.pathsep.join([bootstrap_less, my_app_less]))
 
 
 # Internationalization

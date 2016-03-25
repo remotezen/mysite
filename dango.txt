@@ -1,3 +1,7 @@
+
+####get the virtual environment
++++++++++++
+source $VENV/bin/activate
 django-admin startproject [web] .
 change timezone settings.py
 
