@@ -60,4 +60,15 @@ jupyter  notebook --profile=mysite
   
 
 
+####FORMs
+  Every app must have a form file if there is going to be
+  a from
+from django import forms
+from .models import Post
+  class PostForm(forms.ModelForm):
+      class Meta:
+          model = Post
+          fields = ('title', 'text',)
 
+####Routes
+python manage.py show_urls
