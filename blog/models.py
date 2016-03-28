@@ -2,11 +2,9 @@ from django.db import models
 from django.utils import timezone
 
 
-
-# Create your models here.
 class Post(models.Model):
-    author =  models.ForeignKey('auth.User')
-    title  = models.CharField(max_length=200)
+    author = models.ForeignKey('auth.User')
+    title = models.CharField(max_length=200)
     text = models.TextField()
     created_date = models.DateTimeField(
         default=timezone.now)
@@ -19,6 +17,17 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+    '''
+        python makemigrations blog
+        python manage.py migrate blog
+
+
+        +++++++++++++++++
+        in admin.py
+        admin.site.register(Comment)
+        also in admin import Comment
+    '''
+
 
 class Comment(models.Model):
     post = models.ForeignKey('blog.Post', related_name='comments')
@@ -26,7 +35,6 @@ class Comment(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     approve_comment = models.BooleanField(default=False)
-
 
     def approve(self):
         self.approve_comment = True

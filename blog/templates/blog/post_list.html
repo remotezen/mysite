@@ -7,6 +7,11 @@
       <div class="date">
         <p>published: {{ post.published_date }}</p>
       </div>
+      {% with total=post.comments.count %}
+      <a href="{% url 'blog.views.post_detail' pk=post.pk %}">
+        {{total }} comment{{total|pluralize }}
+      </a>
+      {% endwith %}
     </div>
   {% endfor %}
 {%endblock %}
